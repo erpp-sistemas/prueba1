@@ -9,4 +9,13 @@ export class Tab1Page {
 
   constructor() {}
 
+  find( event ) {
+
+  }
+
+  irCuenta( cuenta ) {
+    console.log(cuenta);
+  }
+
+
 }

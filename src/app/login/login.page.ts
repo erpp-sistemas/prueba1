@@ -67,6 +67,7 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    // Bloqueamos el slide al iniciar para que realize con los botones
     this.slides.lockSwipes(true);
   }
 

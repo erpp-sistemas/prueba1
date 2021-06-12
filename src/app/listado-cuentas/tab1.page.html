@@ -1,0 +1,30 @@
+<ion-header no-border>
+    <ion-toolbar color="white">
+        <ion-title style="text-align:center">
+            <img src="../../assets/img/logo.png" alt="" style="height: 60%; width :30%">
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="resumen-cuentas">
+        <ion-chip color="secondary">Total cuentas</ion-chip>
+        <ion-chip color="success">Gestionadas</ion-chip>
+        <ion-chip color="danger">Faltantes</ion-chip>
+    </div>
+    <ion-searchbar placeholder="Busqueda por cuenta" (ionChange)="find( $event )"></ion-searchbar>
+
+    <!-- Listado de las cuentas -->
+    <ion-card *ngFor="let cuenta of [1,1,1,1,1,1,1]" (click)="irCuenta( cuenta )">
+        <ion-card-header>
+            <ion-card-subtitle>
+                <ion-chip color="success">Cuenta: 10020</ion-chip>
+            </ion-card-subtitle>
+            <p>Propietario: Alejandro Aguilar Alderete</p>
+            <p>Direccion: Calle 6 mz. 5 lt. 4 Col. Valle de los Reyes</p>
+            <p>Deuda:$20,000</p>
+        </ion-card-header>
+    </ion-card>
+
+
+</ion-content>

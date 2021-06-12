@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "erpp-movil": {
+      "hosting": {
+        "app": [
+          "erpp-movil"
+        ]
+      }
+    }
+  }
+}

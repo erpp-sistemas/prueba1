@@ -46,6 +46,8 @@
                             <ion-button type="button" color="success" shape="round" (click)="login()">
                                 Login
                             </ion-button>
+                            <p> <small>¿Olvidaste tu password? </small></p>
+                            <a href="" class="contacta-sistemas"><small>Contacta al área de sistemas</small></a>
                         </ion-col>
                     </ion-row>
 
@@ -55,7 +57,7 @@
 
         </ion-slide>
 
-
+        <!-- Registrar usuario -->
         <ion-slide>
 
             <ion-grid fixed>
@@ -76,39 +78,65 @@
                     </ion-col>
                 </ion-row>
 
-                <form (ngSubmit)="registro( fRegistro )" #fRegistro="ngForm">
-                    <ion-row>
-                        <ion-col>
-                            <ion-list>
+                <ion-row>
+                    <ion-col>
+                        <ion-list>
 
-                                <ion-item>
-                                    <ion-label>Nombre: </ion-label>
-                                    <ion-input name="nombre" type="text" required></ion-input>
-                                </ion-item>
+                            <ion-item>
+                                <ion-label>Nombre: </ion-label>
+                                <ion-input name="nombre" type="text" required [(ngModel)]="nombre"></ion-input>
+                            </ion-item>
 
-                                <ion-item>
-                                    <ion-label>Password: </ion-label>
-                                    <ion-input name="password" type="password" required></ion-input>
-                                </ion-item>
 
-                                <ion-item>
-                                    <ion-label>Email: </ion-label>
-                                    <ion-input name="email" type="email" required></ion-input>
-                                </ion-item>
+                            <ion-item>
+                                <ion-label>Email: </ion-label>
+                                <ion-input name="email" type="email" required [(ngModel)]="email"></ion-input>
+                            </ion-item>
 
-                            </ion-list>
-                        </ion-col>
-                    </ion-row>
+                            <ion-item>
+                                <ion-label>Password: </ion-label>
+                                <ion-input name="password" type="password" required [(ngModel)]="password">
+                                </ion-input>
+                            </ion-item>
+                            <ion-card color="light">
+                                <ion-card-header>
+                                    <ion-card-subtitle>
+                                        <ion-label>Seleccione su plaza</ion-label>
+                                    </ion-card-subtitle>
+                                </ion-card-header>
+                                <ion-card-content>
+                                    <ion-item>
+                                        <ion-select class="myCustomSelect" interface="action-sheet" placeholder="Selecciona plaza" [(ngModel)]="idplaza" [ngModelOptions]="{standalone: true}">
+                                            <ion-select-option value="2"> Leon - Guanajuato </ion-select-option>
+                                            <ion-select-option value="1"> La Paz - Edo. de Mex. </ion-select-option>
+                                            <ion-select-option value="3"> Tlalnepantla - Edo. de Mex.
+                                            </ion-select-option>
+                                            <ion-select-option value="4"> Ecatepec - Edo. de Mex.
+                                            </ion-select-option>
+                                        </ion-select>
+                                    </ion-item>
+                                </ion-card-content>
+                            </ion-card>
+                        </ion-list>
+                    </ion-col>
+                </ion-row>
 
-                    <ion-row>
-                        <ion-col>
-                            <ion-button type="submit" color="success" shape="round">
-                                Crear usuario
-                            </ion-button>
-                        </ion-col>
-                    </ion-row>
+                <ion-row *ngIf="!usuarioVerificado">
+                    <ion-col>
+                        <ion-button type="submit" color="tertiary" shape="round" (click)="verificarUsuario()">
+                            Verificar usuario
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
 
-                </form>
+                <ion-row *ngIf="usuarioVerificado">
+                    <ion-col>
+                        <ion-button type="submit" color="success" shape="round" (click)="crearUsuario()">
+                            Crear usuario
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
+
             </ion-grid>
 
 

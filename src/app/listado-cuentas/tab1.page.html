@@ -1,12 +1,10 @@
 <ion-header no-border>
     <ion-toolbar color="white">
-        <ion-title style="text-align:center">
-            <img src="../../assets/img/logo.png" alt="" style="height: 60%; width :30%">
-        </ion-title>
+        <img src="../../assets/img/logo.png" alt="" style="height: 100px; width :200">
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="white">
     <div class="resumen-cuentas">
         <ion-chip color="secondary">Total cuentas</ion-chip>
         <ion-chip color="success">Gestionadas</ion-chip>
@@ -14,17 +12,48 @@
     </div>
     <ion-searchbar placeholder="Busqueda por cuenta" (ionChange)="find( $event )"></ion-searchbar>
 
-    <!-- Listado de las cuentas -->
-    <ion-card *ngFor="let cuenta of [1,1,1,1,1,1,1]" (click)="irCuenta( cuenta )">
-        <ion-card-header>
-            <ion-card-subtitle>
-                <ion-chip color="success">Cuenta: 10020</ion-chip>
-            </ion-card-subtitle>
-            <p>Propietario: Alejandro Aguilar Alderete</p>
-            <p>Direccion: Calle 6 mz. 5 lt. 4 Col. Valle de los Reyes</p>
-            <p>Deuda:$20,000</p>
-        </ion-card-header>
-    </ion-card>
+    <div class="contenedor">
+        <ion-item-sliding color="white" *ngFor="let cuenta of arrayCuentas">
+
+            <ion-item-options side="start">
+
+                <ion-item-option color="secondary" (click)="goPanoramaView(cuenta)">
+                    <ion-icon slot="icon-only" name="walk"></ion-icon>
+                </ion-item-option>
+
+                <ion-item-option (click)="openLink(cuenta)" color="medium">
+                    <ion-icon slot="icon-only" name="bicycle"></ion-icon>
+                </ion-item-option>
+
+            </ion-item-options>
+
+            <ion-item class="color-black">
+                <ion-label>
+                    <p>
+                        <ion-chip color="success">Cuenta: {{cuenta.cuenta}} </ion-chip>
+                    </p>
+                    <p class="border"><strong>Propietario: </strong>{{cuenta.propietario}}</p>
+                    <p class='border'><strong>Dirección: </strong> {{cuenta.direccion}}</p>
+                    <p class='border'><strong>Deuda:</strong>{{cuenta.deuda | currency:'USD':'symbol' }}</p>
+                </ion-label>
+            </ion-item>
+
+            <ion-item-options side="end">
+
+                <ion-item-option color="tertiary" (click)="gestionarCuenta(cuenta.cuenta)">
+                    <ion-icon slot="icon-only" name="navigate"></ion-icon>
+                </ion-item-option>
+
+                <ion-item-option color="success" (click)="goPhotos(item.cuenta)">
+                    <ion-icon slot="icon-only" name="image"></ion-icon>
+                </ion-item-option>
+
+            </ion-item-options>
+
+        </ion-item-sliding>
+    </div>
+
+
 
 
 </ion-content>
